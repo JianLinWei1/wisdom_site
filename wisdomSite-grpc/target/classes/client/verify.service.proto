@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.ljzn.grpc.client";
+option objc_class_prefix = "CLIENT";
+
+package ClientVerify;
+
+
+message VerifyRequest {
+    string criminal_id = 1;  //罪犯id
+    message CriminalFeature{
+    	int32 len = 1;
+    	repeated float data = 2;
+    }
+    CriminalFeature feature = 2;//罪犯特征
+    int32 delay_time = 3; //超时时间(秒)
+}
+
+message VerifyResponse {
+    int32 result = 1; //成功=1,其他失败
+    string message = 2;
+    float score = 3;
+    int64 verify_time = 4;
+    bytes photo = 5; 
+}
+
+
+service VerifyService {
+    rpc Verify(VerifyRequest) returns (VerifyResponse){};
+}

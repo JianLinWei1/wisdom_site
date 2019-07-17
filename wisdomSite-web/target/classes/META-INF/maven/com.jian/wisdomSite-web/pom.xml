@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.jian</groupId>
+		<artifactId>wisdomSite-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<artifactId>wisdomSite-web</artifactId>
+	<packaging>jar</packaging>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.jian</groupId>
+			<artifactId>wisdomSite-service</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.jian</groupId>
+			<artifactId>wisdomSite-common</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.jian</groupId>
+			<artifactId>wisdomSite-grpc</artifactId>
+		</dependency>
+		
+		<!-- 本地附加jar -->
+		<dependency>
+			<groupId>opencv-341.jar</groupId>
+			<artifactId>opencv-341.jar</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/opencv-341.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>BiologyWebJar.jar</groupId>
+			<artifactId>BiologyWebJar.jar</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/BiologyWebJar.jar</systemPath>
+		</dependency>
+			<dependency>
+			<groupId>SDKServerJava.jar</groupId>
+			<artifactId>SDKServerJava.jar</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/SDKServerJava.jar</systemPath>
+		</dependency> 
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration><!-- 指定该Main Class为全局的唯一入口 -->
+					<mainClass>com.jian.Application</mainClass>
+					<includeSystemScope>true</includeSystemScope>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal><!--可以把依赖的包都打包到生成的Jar包中 -->
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+		</plugins>
+	</build>
+</project>

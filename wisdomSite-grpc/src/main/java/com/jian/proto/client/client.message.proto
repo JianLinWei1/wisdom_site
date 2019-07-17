@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.ljzn.grpc.client";
+option objc_class_prefix = "CLIENT";
+
+package PrisonSystem;
+
+message ClientMessage {
+    string deviceSeril = 1; //设备序列号       必填
+    string deviceName = 2; //设备名称            必填
+    int32 deviceType = 3;  //设备类型      ( 1 大门闸机 2考勤机 3 访客机 4 人证机)    （监所项目选填)
+    string deviceAddress = 4;  //设备地址   非必填
+    string deviceAccuracy = 5;   // 经纬度  非必填  格式{"longitude":"XXxx","latitude":"XXxx"}
+    string serviceAccount = 6;  // 所属服务账号名  必填
+    string servicePassword = 7 ; //所属服务密码 必填
+    string client_ip = 8 ;  //客户端ip
+    int32  client_port = 9 ; //客户端grpc端口
+}

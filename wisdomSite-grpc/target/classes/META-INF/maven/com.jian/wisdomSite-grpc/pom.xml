@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.jian</groupId>
+		<artifactId>wisdomSite-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath> 
+	</parent>
+	<artifactId>wisdomSite-grpc</artifactId>
+    <packaging>jar</packaging>
+	<properties>
+	    <os.plugin.version>1.5.0.Final</os.plugin.version>
+		<protobuf.plugin.version>0.5.1</protobuf.plugin.version>
+		<protoc.version>3.5.1-1</protoc.version>
+		
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<os.detected.classifier>windows-x86_64</os.detected.classifier>
+	</properties>
+
+	<dependencies>
+		
+		<!-- client -->
+		<!-- <dependency>
+			<groupId>net.devh</groupId>
+			<artifactId>grpc-client-spring-boot-starter</artifactId>
+			<version>${grpc.stater.version}</version>
+		</dependency> -->
+        <dependency>
+			<groupId>com.jian</groupId>
+			<artifactId>wisdomSite-service</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>BiologyWebJar.jar</groupId>
+			<artifactId>BiologyWebJar.jar</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/lib/BiologyWebJar.jar</systemPath>
+		</dependency>
+
+
+
+	</dependencies>
+
+
+	<build>
+		<extensions>
+			<extension>
+				<groupId>kr.motd.maven</groupId>
+				<artifactId>os-maven-plugin</artifactId>
+				<version>${os.plugin.version}</version>
+			</extension>
+		</extensions>
+		<plugins>
+			<plugin>
+				<groupId>org.xolstice.maven.plugins</groupId>
+				<artifactId>protobuf-maven-plugin</artifactId>
+				<version>${protobuf.plugin.version}</version>
+				<configuration>
+					<protocArtifact>com.google.protobuf:protoc:${protoc.version}:exe:${os.detected.classifier}</protocArtifact>
+					<pluginId>grpc-java</pluginId>
+					<pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}</pluginArtifact>
+					<!-- proto位置 -->
+					<protoSourceRoot>src/main/java/com/jian/proto</protoSourceRoot>
+					<!-- 生成java文件的位置 -->
+					<outputDirectory>src/main/java</outputDirectory>
+					<!-- 生成java文件的时候，是否清除掉整个目录下所有的内容，切记，这个地方一定要配置成false, 曾经在这里将之前的代码全部清除掉了。 -->
+					<clearOutputDirectory>ture</clearOutputDirectory>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+							<goal>compile-custom</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>enforce</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requireUpperBoundDeps />
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

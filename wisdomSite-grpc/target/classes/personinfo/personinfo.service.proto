@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.ljzn.grpc.personinfo";
+option objc_class_prefix = "PERSONINFO";
+
+import "personinfo/personinfo.message.proto";
+
+package PrisonSystem;
+
+
+//获取人员数据
+message  PersoninfoRequest{
+    int64 version = 1;  //软件启动时上传的version值是0,然后服务端会返回全部数据 
+    bool needPhoto = 2; //false不需要 true 须要
+    string belongId = 3 ;
+    PersonType  persontype = 4;//人员类型
+    string deviceSeril = 5;
+}
+message PersoninfoResponse{
+   int32  code = 1 ;   //新平台统一GRPC接口返回码 成功为1 ,失败为-1)
+   string message = 2 ;
+   repeated PersoninfoMessage personInfo = 3 ;
+}
+//记录上传
+message UploadRecordInfoRequest{
+     repeated  RecordInfo  recordInfo = 1 ;
+}
+message UploadRecordInfoResponse{
+   int32  code = 1 ;   //新平台统一GRPC接口返回码 成功为1 ,失败为-1)
+   string message = 2 ;
+}
+service  PersonInfoAuthService{
+ rpc  GetPersonInfo(PersoninfoRequest) returns (PersoninfoResponse){};
+ rpc  UploadRecordInfo(UploadRecordInfoRequest) returns (UploadRecordInfoResponse){};
+}

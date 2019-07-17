@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.ljzn.grpc.personinfo";
+option objc_class_prefix = "PERSONINFO";
+
+package PrisonSystem; 
+
+enum  PersonType{
+    Police = 0 ; //警
+    Criminal = 1 ; //犯
+}
+   
+//人员基本信息
+message  PersoninfoMessage{
+  string  cardId = 1; //工作证号(编号)
+  string name =2 ;  //姓名
+  PersonType  persontype = 3 ; //人员类型
+  repeated float photoFeature = 4 ; //特征(windows)
+  int64  photoFeatureLen = 5 ; //特征长度
+  bytes  photo = 6 ; //照片（可选)
+  int64  version = 7 ;
+  int32  action = 8 ; //操作 -1删除  1 增加 2 更新
+  
+}
+//记录信息
+message  RecordInfo{
+   string cardId = 1 ; //工作证号(编号)
+   string name = 2 ;  //姓名
+   string verifyTime = 3 ;// 比对时间 （yyyy-MM-dd HH:mm:ss)
+   float verifyScore = 4 ; //比对分值
+   bytes  verifyPhoto = 5 ;//比对照片
+   string deviceSeril = 6 ; // 设备号
+   string verifyResult = 7 ;//比对结果
+   
+}
+

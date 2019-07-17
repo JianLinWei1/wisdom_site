@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jian.dao.LjDeviceMapper">
+  <resultMap id="BaseResultMap" type="com.jian.entity.LjDevice">
+    <id column="device_seril" jdbcType="VARCHAR" property="deviceSeril" />
+    <result column="device_name" jdbcType="VARCHAR" property="deviceName" />
+    <result column="device_type" jdbcType="INTEGER" property="deviceType" />
+    <result column="device_address" jdbcType="VARCHAR" property="deviceAddress" />
+    <result column="device_accuracy" jdbcType="VARCHAR" property="deviceAccuracy" />
+    <result column="tcp_id" jdbcType="VARCHAR" property="tcpId" />
+    <result column="tcp_port" jdbcType="VARCHAR" property="tcpPort" />
+    <result column="io_type" jdbcType="INTEGER" property="ioType" />
+    <result column="belong_id" jdbcType="VARCHAR" property="belongId" />
+    <result column="device_no" jdbcType="VARCHAR" property="deviceNo" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    device_seril, device_name, device_type, device_address, device_accuracy, tcp_id, 
+    tcp_port, io_type, belong_id, device_no
+  </sql>
+  <select id="selectByExample" parameterType="com.jian.entity.LjDeviceExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lj_device
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lj_device
+    where device_seril = #{deviceSeril,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from lj_device
+    where device_seril = #{deviceSeril,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jian.entity.LjDeviceExample">
+    delete from lj_device
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jian.entity.LjDevice">
+    insert into lj_device (device_seril, device_name, device_type, 
+      device_address, device_accuracy, tcp_id, 
+      tcp_port, io_type, belong_id, 
+      device_no)
+    values (#{deviceSeril,jdbcType=VARCHAR}, #{deviceName,jdbcType=VARCHAR}, #{deviceType,jdbcType=INTEGER}, 
+      #{deviceAddress,jdbcType=VARCHAR}, #{deviceAccuracy,jdbcType=VARCHAR}, #{tcpId,jdbcType=VARCHAR}, 
+      #{tcpPort,jdbcType=VARCHAR}, #{ioType,jdbcType=INTEGER}, #{belongId,jdbcType=VARCHAR}, 
+      #{deviceNo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jian.entity.LjDevice">
+    insert into lj_device
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="deviceSeril != null">
+        device_seril,
+      </if>
+      <if test="deviceName != null">
+        device_name,
+      </if>
+      <if test="deviceType != null">
+        device_type,
+      </if>
+      <if test="deviceAddress != null">
+        device_address,
+      </if>
+      <if test="deviceAccuracy != null">
+        device_accuracy,
+      </if>
+      <if test="tcpId != null">
+        tcp_id,
+      </if>
+      <if test="tcpPort != null">
+        tcp_port,
+      </if>
+      <if test="ioType != null">
+        io_type,
+      </if>
+      <if test="belongId != null">
+        belong_id,
+      </if>
+      <if test="deviceNo != null">
+        device_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="deviceSeril != null">
+        #{deviceSeril,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceName != null">
+        #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceType != null">
+        #{deviceType,jdbcType=INTEGER},
+      </if>
+      <if test="deviceAddress != null">
+        #{deviceAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceAccuracy != null">
+        #{deviceAccuracy,jdbcType=VARCHAR},
+      </if>
+      <if test="tcpId != null">
+        #{tcpId,jdbcType=VARCHAR},
+      </if>
+      <if test="tcpPort != null">
+        #{tcpPort,jdbcType=VARCHAR},
+      </if>
+      <if test="ioType != null">
+        #{ioType,jdbcType=INTEGER},
+      </if>
+      <if test="belongId != null">
+        #{belongId,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceNo != null">
+        #{deviceNo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jian.entity.LjDeviceExample" resultType="java.lang.Long">
+    select count(*) from lj_device
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update lj_device
+    <set>
+      <if test="record.deviceSeril != null">
+        device_seril = #{record.deviceSeril,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceName != null">
+        device_name = #{record.deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceType != null">
+        device_type = #{record.deviceType,jdbcType=INTEGER},
+      </if>
+      <if test="record.deviceAddress != null">
+        device_address = #{record.deviceAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceAccuracy != null">
+        device_accuracy = #{record.deviceAccuracy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tcpId != null">
+        tcp_id = #{record.tcpId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tcpPort != null">
+        tcp_port = #{record.tcpPort,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ioType != null">
+        io_type = #{record.ioType,jdbcType=INTEGER},
+      </if>
+      <if test="record.belongId != null">
+        belong_id = #{record.belongId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceNo != null">
+        device_no = #{record.deviceNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update lj_device
+    set device_seril = #{record.deviceSeril,jdbcType=VARCHAR},
+      device_name = #{record.deviceName,jdbcType=VARCHAR},
+      device_type = #{record.deviceType,jdbcType=INTEGER},
+      device_address = #{record.deviceAddress,jdbcType=VARCHAR},
+      device_accuracy = #{record.deviceAccuracy,jdbcType=VARCHAR},
+      tcp_id = #{record.tcpId,jdbcType=VARCHAR},
+      tcp_port = #{record.tcpPort,jdbcType=VARCHAR},
+      io_type = #{record.ioType,jdbcType=INTEGER},
+      belong_id = #{record.belongId,jdbcType=VARCHAR},
+      device_no = #{record.deviceNo,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jian.entity.LjDevice">
+    update lj_device
+    <set>
+      <if test="deviceName != null">
+        device_name = #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceType != null">
+        device_type = #{deviceType,jdbcType=INTEGER},
+      </if>
+      <if test="deviceAddress != null">
+        device_address = #{deviceAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceAccuracy != null">
+        device_accuracy = #{deviceAccuracy,jdbcType=VARCHAR},
+      </if>
+      <if test="tcpId != null">
+        tcp_id = #{tcpId,jdbcType=VARCHAR},
+      </if>
+      <if test="tcpPort != null">
+        tcp_port = #{tcpPort,jdbcType=VARCHAR},
+      </if>
+      <if test="ioType != null">
+        io_type = #{ioType,jdbcType=INTEGER},
+      </if>
+      <if test="belongId != null">
+        belong_id = #{belongId,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceNo != null">
+        device_no = #{deviceNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where device_seril = #{deviceSeril,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jian.entity.LjDevice">
+    update lj_device
+    set device_name = #{deviceName,jdbcType=VARCHAR},
+      device_type = #{deviceType,jdbcType=INTEGER},
+      device_address = #{deviceAddress,jdbcType=VARCHAR},
+      device_accuracy = #{deviceAccuracy,jdbcType=VARCHAR},
+      tcp_id = #{tcpId,jdbcType=VARCHAR},
+      tcp_port = #{tcpPort,jdbcType=VARCHAR},
+      io_type = #{ioType,jdbcType=INTEGER},
+      belong_id = #{belongId,jdbcType=VARCHAR},
+      device_no = #{deviceNo,jdbcType=VARCHAR}
+    where device_seril = #{deviceSeril,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.jian.entity.LjDeviceExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lj_device
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

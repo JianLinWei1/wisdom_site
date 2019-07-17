@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jian.dao.LjWorkerInfoMapper">
+  <resultMap id="BaseResultMap" type="com.jian.entity.LjWorkerInfo">
+    <id column="id_card" jdbcType="VARCHAR" property="idCard" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="user_type" jdbcType="INTEGER" property="userType" />
+    <result column="work_type_id" jdbcType="VARCHAR" property="workTypeId" />
+    <result column="belong_id" jdbcType="VARCHAR" property="belongId" />
+    <result column="action" jdbcType="INTEGER" property="action" />
+    <result column="version" jdbcType="BIGINT" property="version" />
+    <result column="upload" jdbcType="INTEGER" property="upload" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id_card, name, user_type, work_type_id, belong_id, action, version, upload
+  </sql>
+  <select id="selectByExample" parameterType="com.jian.entity.LjWorkerInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lj_worker_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lj_worker_info
+    where id_card = #{idCard,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from lj_worker_info
+    where id_card = #{idCard,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jian.entity.LjWorkerInfoExample">
+    delete from lj_worker_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jian.entity.LjWorkerInfo">
+    insert into lj_worker_info (id_card, name, user_type, 
+      work_type_id, belong_id, action, 
+      version, upload)
+    values (#{idCard,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{userType,jdbcType=INTEGER}, 
+      #{workTypeId,jdbcType=VARCHAR}, #{belongId,jdbcType=VARCHAR}, #{action,jdbcType=INTEGER}, 
+      #{version,jdbcType=BIGINT}, #{upload,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jian.entity.LjWorkerInfo">
+    insert into lj_worker_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idCard != null">
+        id_card,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="userType != null">
+        user_type,
+      </if>
+      <if test="workTypeId != null">
+        work_type_id,
+      </if>
+      <if test="belongId != null">
+        belong_id,
+      </if>
+      <if test="action != null">
+        action,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="upload != null">
+        upload,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idCard != null">
+        #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="workTypeId != null">
+        #{workTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="belongId != null">
+        #{belongId,jdbcType=VARCHAR},
+      </if>
+      <if test="action != null">
+        #{action,jdbcType=INTEGER},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=BIGINT},
+      </if>
+      <if test="upload != null">
+        #{upload,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jian.entity.LjWorkerInfoExample" resultType="java.lang.Long">
+    select count(*) from lj_worker_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update lj_worker_info
+    <set>
+      <if test="record.idCard != null">
+        id_card = #{record.idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userType != null">
+        user_type = #{record.userType,jdbcType=INTEGER},
+      </if>
+      <if test="record.workTypeId != null">
+        work_type_id = #{record.workTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.belongId != null">
+        belong_id = #{record.belongId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.action != null">
+        action = #{record.action,jdbcType=INTEGER},
+      </if>
+      <if test="record.version != null">
+        version = #{record.version,jdbcType=BIGINT},
+      </if>
+      <if test="record.upload != null">
+        upload = #{record.upload,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update lj_worker_info
+    set id_card = #{record.idCard,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      user_type = #{record.userType,jdbcType=INTEGER},
+      work_type_id = #{record.workTypeId,jdbcType=VARCHAR},
+      belong_id = #{record.belongId,jdbcType=VARCHAR},
+      action = #{record.action,jdbcType=INTEGER},
+      version = #{record.version,jdbcType=BIGINT},
+      upload = #{record.upload,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jian.entity.LjWorkerInfo">
+    update lj_worker_info
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null">
+        user_type = #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="workTypeId != null">
+        work_type_id = #{workTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="belongId != null">
+        belong_id = #{belongId,jdbcType=VARCHAR},
+      </if>
+      <if test="action != null">
+        action = #{action,jdbcType=INTEGER},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=BIGINT},
+      </if>
+      <if test="upload != null">
+        upload = #{upload,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id_card = #{idCard,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jian.entity.LjWorkerInfo">
+    update lj_worker_info
+    set name = #{name,jdbcType=VARCHAR},
+      user_type = #{userType,jdbcType=INTEGER},
+      work_type_id = #{workTypeId,jdbcType=VARCHAR},
+      belong_id = #{belongId,jdbcType=VARCHAR},
+      action = #{action,jdbcType=INTEGER},
+      version = #{version,jdbcType=BIGINT},
+      upload = #{upload,jdbcType=INTEGER}
+    where id_card = #{idCard,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.jian.entity.LjWorkerInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lj_worker_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

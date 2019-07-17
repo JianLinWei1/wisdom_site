@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.jian</groupId>
+		<artifactId>wisdomSite-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>wisdomSite-common</artifactId>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- 本地附加jar -->
+		<dependency>
+			<groupId>opencv-341.jar</groupId>
+			<artifactId>opencv-341.jar</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/opencv-341.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>BiologyWebJar.jar</groupId>
+			<artifactId>BiologyWebJar.jar</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/BiologyWebJar.jar</systemPath>
+		</dependency>
+		
+		<dependency>
+			<groupId>SDKServerJava.jar</groupId>
+			<artifactId>SDKServerJava.jar</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/SDKServerJava.jar</systemPath>
+		</dependency>
+	</dependencies>
+</project>
