@@ -12,6 +12,7 @@
     <result column="io_type" jdbcType="INTEGER" property="ioType" />
     <result column="belong_id" jdbcType="VARCHAR" property="belongId" />
     <result column="device_no" jdbcType="VARCHAR" property="deviceNo" />
+    <result column="device_key" jdbcType="VARCHAR" property="deviceKey" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,7 +74,7 @@
   </sql>
   <sql id="Base_Column_List">
     device_seril, device_name, device_type, device_address, device_accuracy, tcp_id, 
-    tcp_port, io_type, belong_id, device_no
+    tcp_port, io_type, belong_id, device_no, device_key
   </sql>
   <select id="selectByExample" parameterType="com.jian.entity.LjDeviceExample" resultMap="BaseResultMap">
     select
@@ -109,11 +110,11 @@
     insert into lj_device (device_seril, device_name, device_type, 
       device_address, device_accuracy, tcp_id, 
       tcp_port, io_type, belong_id, 
-      device_no)
+      device_no, device_key)
     values (#{deviceSeril,jdbcType=VARCHAR}, #{deviceName,jdbcType=VARCHAR}, #{deviceType,jdbcType=INTEGER}, 
       #{deviceAddress,jdbcType=VARCHAR}, #{deviceAccuracy,jdbcType=VARCHAR}, #{tcpId,jdbcType=VARCHAR}, 
       #{tcpPort,jdbcType=VARCHAR}, #{ioType,jdbcType=INTEGER}, #{belongId,jdbcType=VARCHAR}, 
-      #{deviceNo,jdbcType=VARCHAR})
+      #{deviceNo,jdbcType=VARCHAR}, #{deviceKey,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.jian.entity.LjDevice">
     insert into lj_device
@@ -148,6 +149,9 @@
       <if test="deviceNo != null">
         device_no,
       </if>
+      <if test="deviceKey != null">
+        device_key,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="deviceSeril != null">
@@ -179,6 +183,9 @@
       </if>
       <if test="deviceNo != null">
         #{deviceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceKey != null">
+        #{deviceKey,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -221,6 +228,9 @@
       <if test="record.deviceNo != null">
         device_no = #{record.deviceNo,jdbcType=VARCHAR},
       </if>
+      <if test="record.deviceKey != null">
+        device_key = #{record.deviceKey,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -237,7 +247,8 @@
       tcp_port = #{record.tcpPort,jdbcType=VARCHAR},
       io_type = #{record.ioType,jdbcType=INTEGER},
       belong_id = #{record.belongId,jdbcType=VARCHAR},
-      device_no = #{record.deviceNo,jdbcType=VARCHAR}
+      device_no = #{record.deviceNo,jdbcType=VARCHAR},
+      device_key = #{record.deviceKey,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -272,6 +283,9 @@
       <if test="deviceNo != null">
         device_no = #{deviceNo,jdbcType=VARCHAR},
       </if>
+      <if test="deviceKey != null">
+        device_key = #{deviceKey,jdbcType=VARCHAR},
+      </if>
     </set>
     where device_seril = #{deviceSeril,jdbcType=VARCHAR}
   </update>
@@ -285,7 +299,8 @@
       tcp_port = #{tcpPort,jdbcType=VARCHAR},
       io_type = #{ioType,jdbcType=INTEGER},
       belong_id = #{belongId,jdbcType=VARCHAR},
-      device_no = #{deviceNo,jdbcType=VARCHAR}
+      device_no = #{deviceNo,jdbcType=VARCHAR},
+      device_key = #{deviceKey,jdbcType=VARCHAR}
     where device_seril = #{deviceSeril,jdbcType=VARCHAR}
   </update>
   <select id="selectByExampleWithRowbounds" parameterType="com.jian.entity.LjDeviceExample" resultMap="BaseResultMap">

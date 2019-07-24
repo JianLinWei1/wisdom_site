@@ -23,6 +23,8 @@ public class LjDevice implements Serializable {
 
     private String deviceNo;
 
+    private String deviceKey;
+
     private static final long serialVersionUID = 1L;
 
     public String getDeviceSeril() {
@@ -103,5 +105,13 @@ public class LjDevice implements Serializable {
 
     public void setDeviceNo(String deviceNo) {
         this.deviceNo = deviceNo == null ? null : deviceNo.trim();
+    }
+
+    public String getDeviceKey() {
+        return deviceKey;
+    }
+
+    public void setDeviceKey(String deviceKey) {
+        this.deviceKey = deviceKey == null ? null : deviceKey.trim();
     }
 }

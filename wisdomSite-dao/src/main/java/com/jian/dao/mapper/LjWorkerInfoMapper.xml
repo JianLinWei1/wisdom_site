@@ -10,6 +10,7 @@
     <result column="action" jdbcType="INTEGER" property="action" />
     <result column="version" jdbcType="BIGINT" property="version" />
     <result column="upload" jdbcType="INTEGER" property="upload" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -70,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id_card, name, user_type, work_type_id, belong_id, action, version, upload
+    id_card, name, user_type, work_type_id, belong_id, action, version, upload, user_id
   </sql>
   <select id="selectByExample" parameterType="com.jian.entity.LjWorkerInfoExample" resultMap="BaseResultMap">
     select
@@ -105,10 +106,12 @@
   <insert id="insert" parameterType="com.jian.entity.LjWorkerInfo">
     insert into lj_worker_info (id_card, name, user_type, 
       work_type_id, belong_id, action, 
-      version, upload)
+      version, upload, user_id
+      )
     values (#{idCard,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{userType,jdbcType=INTEGER}, 
       #{workTypeId,jdbcType=VARCHAR}, #{belongId,jdbcType=VARCHAR}, #{action,jdbcType=INTEGER}, 
-      #{version,jdbcType=BIGINT}, #{upload,jdbcType=INTEGER})
+      #{version,jdbcType=BIGINT}, #{upload,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.jian.entity.LjWorkerInfo">
     insert into lj_worker_info
@@ -137,6 +140,9 @@
       <if test="upload != null">
         upload,
       </if>
+      <if test="userId != null">
+        user_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="idCard != null">
@@ -162,6 +168,9 @@
       </if>
       <if test="upload != null">
         #{upload,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -198,6 +207,9 @@
       <if test="record.upload != null">
         upload = #{record.upload,jdbcType=INTEGER},
       </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -212,7 +224,8 @@
       belong_id = #{record.belongId,jdbcType=VARCHAR},
       action = #{record.action,jdbcType=INTEGER},
       version = #{record.version,jdbcType=BIGINT},
-      upload = #{record.upload,jdbcType=INTEGER}
+      upload = #{record.upload,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -241,6 +254,9 @@
       <if test="upload != null">
         upload = #{upload,jdbcType=INTEGER},
       </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
     </set>
     where id_card = #{idCard,jdbcType=VARCHAR}
   </update>
@@ -252,7 +268,8 @@
       belong_id = #{belongId,jdbcType=VARCHAR},
       action = #{action,jdbcType=INTEGER},
       version = #{version,jdbcType=BIGINT},
-      upload = #{upload,jdbcType=INTEGER}
+      upload = #{upload,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=VARCHAR}
     where id_card = #{idCard,jdbcType=VARCHAR}
   </update>
   <select id="selectByExampleWithRowbounds" parameterType="com.jian.entity.LjWorkerInfoExample" resultMap="BaseResultMap">

@@ -1,6 +1,7 @@
-D:\new_workspace\boot-parent\boot-service\src\main\java\com\jian\service\DeviceService.java
-D:\new_workspace\boot-parent\boot-service\src\main\java\com\jian\service\impl\DeviceServiceImpl.java
-D:\new_workspace\boot-parent\boot-service\src\main\java\com\jian\service\PrisonsPersonService.java
-D:\new_workspace\boot-parent\boot-service\src\main\java\com\jian\service\impl\SysAdminServiceImpl.java
-D:\new_workspace\boot-parent\boot-service\src\main\java\com\jian\service\SysAdminService.java
-D:\new_workspace\boot-parent\boot-service\src\main\java\com\jian\service\impl\PrisonsPersonServiceImpl.java
+D:\new_workspace\wisdomSite-parent\wisdomSite-service\src\main\java\com\jian\service\impl\LjDeviceServiceImpl.java
+D:\new_workspace\wisdomSite-parent\wisdomSite-service\src\main\java\com\jian\service\impl\SysAdminServiceImpl.java
+D:\new_workspace\wisdomSite-parent\wisdomSite-service\src\main\java\com\jian\service\impl\WorkerServiceImpl.java
+D:\new_workspace\wisdomSite-parent\wisdomSite-service\src\main\java\com\jian\service\SysAdminService.java
+D:\new_workspace\wisdomSite-parent\wisdomSite-service\src\main\java\com\jian\service\WorkerService.java
+D:\new_workspace\wisdomSite-parent\wisdomSite-service\src\main\java\com\jian\service\facecam\FaceCamreaUtil.java
+D:\new_workspace\wisdomSite-parent\wisdomSite-service\src\main\java\com\jian\service\LjDeviceService.java

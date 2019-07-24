@@ -7,15 +7,15 @@
 		<groupId>com.jian</groupId>
 		<artifactId>wisdomSite-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath> 
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>wisdomSite-grpc</artifactId>
-    <packaging>jar</packaging>
+	<packaging>jar</packaging>
 	<properties>
-	    <os.plugin.version>1.5.0.Final</os.plugin.version>
+		<os.plugin.version>1.5.0.Final</os.plugin.version>
 		<protobuf.plugin.version>0.5.1</protobuf.plugin.version>
 		<protoc.version>3.5.1-1</protoc.version>
-		
+
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -24,16 +24,20 @@
 	</properties>
 
 	<dependencies>
-		
+
 		<!-- client -->
-		<!-- <dependency>
-			<groupId>net.devh</groupId>
-			<artifactId>grpc-client-spring-boot-starter</artifactId>
-			<version>${grpc.stater.version}</version>
-		</dependency> -->
-        <dependency>
+		<!-- <dependency> <groupId>net.devh</groupId> <artifactId>grpc-client-spring-boot-starter</artifactId> 
+			<version>${grpc.stater.version}</version> </dependency> -->
+		<dependency>
 			<groupId>com.jian</groupId>
 			<artifactId>wisdomSite-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.fasterxml.jackson.core</groupId>
+					<artifactId>jackson-annotations</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>BiologyWebJar.jar</groupId>

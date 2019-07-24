@@ -14,6 +14,8 @@ public class LjStrangerCapture implements Serializable {
 
     private Integer qValue;
 
+    private String deviceSeril;
+
     private static final long serialVersionUID = 1L;
 
     public String getUuid() {
@@ -54,5 +56,13 @@ public class LjStrangerCapture implements Serializable {
 
     public void setqValue(Integer qValue) {
         this.qValue = qValue;
+    }
+
+    public String getDeviceSeril() {
+        return deviceSeril;
+    }
+
+    public void setDeviceSeril(String deviceSeril) {
+        this.deviceSeril = deviceSeril == null ? null : deviceSeril.trim();
     }
 }

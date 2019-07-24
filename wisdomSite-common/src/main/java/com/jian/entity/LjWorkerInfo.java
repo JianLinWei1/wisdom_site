@@ -19,6 +19,8 @@ public class LjWorkerInfo extends LjCardInfo implements Serializable {
 
     private Integer upload;
 
+    private String userId;
+
     private static final long serialVersionUID = 1L;
 
     public String getIdCard() {
@@ -83,5 +85,13 @@ public class LjWorkerInfo extends LjCardInfo implements Serializable {
 
     public void setUpload(Integer upload) {
         this.upload = upload;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
     }
 }

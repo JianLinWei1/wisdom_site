@@ -96,5 +96,6 @@ public class WokerRegisterController {
 	public ResultUtil delWokerInfoByIdcard(String idCard){
 		return workerSer.delWokerInfoByIdCard(idCard);
 	}
-
+    
+	
 }

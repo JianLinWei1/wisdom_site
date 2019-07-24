@@ -435,6 +435,76 @@ public class LjStrangerCaptureExample {
             return (Criteria) this;
         }
 
+        public Criteria andDeviceSerilIsNull() {
+            addCriterion("device_seril is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceSerilIsNotNull() {
+            addCriterion("device_seril is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceSerilEqualTo(String value) {
+            addCriterion("device_seril =", value, "deviceSeril");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceSerilNotEqualTo(String value) {
+            addCriterion("device_seril <>", value, "deviceSeril");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceSerilGreaterThan(String value) {
+            addCriterion("device_seril >", value, "deviceSeril");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceSerilGreaterThanOrEqualTo(String value) {
+            addCriterion("device_seril >=", value, "deviceSeril");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceSerilLessThan(String value) {
+            addCriterion("device_seril <", value, "deviceSeril");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceSerilLessThanOrEqualTo(String value) {
+            addCriterion("device_seril <=", value, "deviceSeril");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceSerilLike(String value) {
+            addCriterion("device_seril like", value, "deviceSeril");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceSerilNotLike(String value) {
+            addCriterion("device_seril not like", value, "deviceSeril");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceSerilIn(List<String> values) {
+            addCriterion("device_seril in", values, "deviceSeril");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceSerilNotIn(List<String> values) {
+            addCriterion("device_seril not in", values, "deviceSeril");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceSerilBetween(String value1, String value2) {
+            addCriterion("device_seril between", value1, value2, "deviceSeril");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceSerilNotBetween(String value1, String value2) {
+            addCriterion("device_seril not between", value1, value2, "deviceSeril");
+            return (Criteria) this;
+        }
+
         public Criteria andUuidLikeInsensitive(String value) {
             addCriterion("upper(uuid) like", value.toUpperCase(), "uuid");
             return (Criteria) this;
@@ -447,6 +517,11 @@ public class LjStrangerCaptureExample {
 
         public Criteria andBelongIdLikeInsensitive(String value) {
             addCriterion("upper(belong_id) like", value.toUpperCase(), "belongId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceSerilLikeInsensitive(String value) {
+            addCriterion("upper(device_seril) like", value.toUpperCase(), "deviceSeril");
             return (Criteria) this;
         }
     }

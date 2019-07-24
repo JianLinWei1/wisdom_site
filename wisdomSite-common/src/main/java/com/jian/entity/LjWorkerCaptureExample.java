@@ -575,6 +575,66 @@ public class LjWorkerCaptureExample {
             return (Criteria) this;
         }
 
+        public Criteria andUploadIsNull() {
+            addCriterion("upload is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUploadIsNotNull() {
+            addCriterion("upload is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUploadEqualTo(Integer value) {
+            addCriterion("upload =", value, "upload");
+            return (Criteria) this;
+        }
+
+        public Criteria andUploadNotEqualTo(Integer value) {
+            addCriterion("upload <>", value, "upload");
+            return (Criteria) this;
+        }
+
+        public Criteria andUploadGreaterThan(Integer value) {
+            addCriterion("upload >", value, "upload");
+            return (Criteria) this;
+        }
+
+        public Criteria andUploadGreaterThanOrEqualTo(Integer value) {
+            addCriterion("upload >=", value, "upload");
+            return (Criteria) this;
+        }
+
+        public Criteria andUploadLessThan(Integer value) {
+            addCriterion("upload <", value, "upload");
+            return (Criteria) this;
+        }
+
+        public Criteria andUploadLessThanOrEqualTo(Integer value) {
+            addCriterion("upload <=", value, "upload");
+            return (Criteria) this;
+        }
+
+        public Criteria andUploadIn(List<Integer> values) {
+            addCriterion("upload in", values, "upload");
+            return (Criteria) this;
+        }
+
+        public Criteria andUploadNotIn(List<Integer> values) {
+            addCriterion("upload not in", values, "upload");
+            return (Criteria) this;
+        }
+
+        public Criteria andUploadBetween(Integer value1, Integer value2) {
+            addCriterion("upload between", value1, value2, "upload");
+            return (Criteria) this;
+        }
+
+        public Criteria andUploadNotBetween(Integer value1, Integer value2) {
+            addCriterion("upload not between", value1, value2, "upload");
+            return (Criteria) this;
+        }
+
         public Criteria andUuidLikeInsensitive(String value) {
             addCriterion("upper(uuid) like", value.toUpperCase(), "uuid");
             return (Criteria) this;

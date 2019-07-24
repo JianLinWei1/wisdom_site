@@ -18,6 +18,8 @@ public class LjWorkerCapture implements Serializable {
 
     private String belongId;
 
+    private Integer upload;
+
     private static final long serialVersionUID = 1L;
 
     public String getUuid() {
@@ -74,5 +76,13 @@ public class LjWorkerCapture implements Serializable {
 
     public void setBelongId(String belongId) {
         this.belongId = belongId == null ? null : belongId.trim();
+    }
+
+    public Integer getUpload() {
+        return upload;
+    }
+
+    public void setUpload(Integer upload) {
+        this.upload = upload;
     }
 }

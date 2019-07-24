@@ -784,6 +784,76 @@ public class LjDeviceExample {
             return (Criteria) this;
         }
 
+        public Criteria andDeviceKeyIsNull() {
+            addCriterion("device_key is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceKeyIsNotNull() {
+            addCriterion("device_key is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceKeyEqualTo(String value) {
+            addCriterion("device_key =", value, "deviceKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceKeyNotEqualTo(String value) {
+            addCriterion("device_key <>", value, "deviceKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceKeyGreaterThan(String value) {
+            addCriterion("device_key >", value, "deviceKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceKeyGreaterThanOrEqualTo(String value) {
+            addCriterion("device_key >=", value, "deviceKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceKeyLessThan(String value) {
+            addCriterion("device_key <", value, "deviceKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceKeyLessThanOrEqualTo(String value) {
+            addCriterion("device_key <=", value, "deviceKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceKeyLike(String value) {
+            addCriterion("device_key like", value, "deviceKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceKeyNotLike(String value) {
+            addCriterion("device_key not like", value, "deviceKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceKeyIn(List<String> values) {
+            addCriterion("device_key in", values, "deviceKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceKeyNotIn(List<String> values) {
+            addCriterion("device_key not in", values, "deviceKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceKeyBetween(String value1, String value2) {
+            addCriterion("device_key between", value1, value2, "deviceKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceKeyNotBetween(String value1, String value2) {
+            addCriterion("device_key not between", value1, value2, "deviceKey");
+            return (Criteria) this;
+        }
+
         public Criteria andDeviceSerilLikeInsensitive(String value) {
             addCriterion("upper(device_seril) like", value.toUpperCase(), "deviceSeril");
             return (Criteria) this;
@@ -821,6 +891,11 @@ public class LjDeviceExample {
 
         public Criteria andDeviceNoLikeInsensitive(String value) {
             addCriterion("upper(device_no) like", value.toUpperCase(), "deviceNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceKeyLikeInsensitive(String value) {
+            addCriterion("upper(device_key) like", value.toUpperCase(), "deviceKey");
             return (Criteria) this;
         }
     }
