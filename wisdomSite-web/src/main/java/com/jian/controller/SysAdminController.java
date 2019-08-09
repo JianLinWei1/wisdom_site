@@ -1,5 +1,8 @@
 package com.jian.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,17 +43,25 @@ public class SysAdminController {
 	}
 	
 	
+//	@PostMapping("/getUserInfo")
+//	public  ResultUtil  getUserInfo(){
+////		/*JSONObject object = new JSONObject();
+////		object.put("0", "admin");
+////		JSONArray array = new JSONArray();
+////		array.add(object);*/
+////		String[] s  =  {"admin"};
+////		ResultUtil  util = new ResultUtil();
+////		util.setCode(0);
+////		util.setData(s);
+//		return sas.getUserInfo();
+//	}
+	
+	
+	
 	@PostMapping("/getUserInfo")
 	public  ResultUtil  getUserInfo(){
-		/*JSONObject object = new JSONObject();
-		object.put("0", "admin");
-		JSONArray array = new JSONArray();
-		array.add(object);*/
-		String[] s  =  {"admin"};
-		ResultUtil  util = new ResultUtil();
-		util.setCode(0);
-		util.setData(s);
-		return util;
+		
+		return sas.getUserInfo();
 	}
 
 	@GetMapping("/logout")

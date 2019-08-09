@@ -167,14 +167,16 @@ public class CdZjUtil implements CommandLineRunner {
 			public void run() {
 				while (true) {
 					try {
-
+						Thread.sleep(1 * 60 * 1000);
 						logger.info("*******获取市平台下发人脸********");
 						List<LjDevice> devices = deviceService.getDevices();
 						for (LjDevice d : devices) {
+							if(StringUtils.isEmpty(d.getDeviceKey()))
+								continue;
 							getIssuedPerson(d.getDeviceSeril() ,d.getDeviceKey());
 							delPerson(d.getDeviceSeril() , d.getDeviceKey());
 						}
-						Thread.sleep(1 * 60 * 1000);
+						
 
 					} catch (Exception e) {
 						logger.error(e.getMessage(), e);

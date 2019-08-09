@@ -30,3 +30,4 @@ mybatis:
 recordUpload: http://saas.weyouedu.com/api/record/upload
 configPort: 10001
 dataPort: 10002
+belongid: jianlinwei
