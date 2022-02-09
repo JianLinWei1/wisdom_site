@@ -20,7 +20,7 @@
 		<druid.version>1.1.10</druid.version>
 		<org.json.version>20150729</org.json.version>
 		<fatjson.version>1.1.41</fatjson.version>
-		<shiro.version>1.4.0</shiro.version>
+		<shiro.version>1.7.1</shiro.version>
 		<pagehelper.version>1.2.10</pagehelper.version>
 		<swagger.version>2.9.2</swagger.version>
 		<jna.version>4.5.1</jna.version>
