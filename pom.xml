@@ -25,7 +25,7 @@
 		<swagger.version>2.9.2</swagger.version>
 		<jna.version>4.5.1</jna.version>
 		<commons-io.version>2.4</commons-io.version>
-		<mina.version>2.0.16</mina.version>
+		<mina.version>2.0.22</mina.version>
 
 		<jackson.version>2.9.8</jackson.version>
 		<grpc.version>1.18.0</grpc.version>
